@@ -5,11 +5,10 @@ public class Products {
     private String productID;
     private int productValue;
     private String seller;
-    private String orderHistory;
 
     public Products (){}
 
-    public Products(String productID, int productValue, String seller, String orderHistory) {
+    public Products(String productID, int productValue, String seller) {
         this.productID = productID;
         this.seller = seller;
         this.productValue = productValue;
@@ -38,14 +37,6 @@ public class Products {
 
     public void setProductValue(int productValue) {
         this.productValue = productValue;
-    }
-
-    public String getOrderHistory() {
-        return orderHistory;
-    }
-
-    public void setOrderHistory(String orderHistory) {
-        this.orderHistory = orderHistory;
     }
 
 

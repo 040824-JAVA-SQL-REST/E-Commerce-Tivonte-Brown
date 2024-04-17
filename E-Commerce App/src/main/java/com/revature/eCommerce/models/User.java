@@ -5,7 +5,6 @@ public class User {
     private String name;
     private String password;
     private String email;
-    private String purchaseHistory;
     private String roleID;
     private int money;
 
@@ -13,7 +12,7 @@ public class User {
     public User() {
     }
 
-        public User(String userID, String name, String password, String email, String purchaseHistory, String roleID,
+        public User(String userID, String name, String password, String email, String roleID,
             int money) {
         this.userID = userID;
         this.name = name;
@@ -61,16 +60,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-
-    public String getPurchaseHistory() {
-        return purchaseHistory;
-    }
-
-
-    public void setPurchaseHistory(String purchaseHistory) {
-        this.purchaseHistory = purchaseHistory;
     }
 
 
