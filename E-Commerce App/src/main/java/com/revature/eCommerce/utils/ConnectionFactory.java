@@ -9,5 +9,29 @@ public class ConnectionFactory{
     private static  ConnectionFactory instance;
     private Connection conn;
 
-    private ConnectionFactory getInstance
+    PRIVATE ConnectionFactory() throws IOException, SQLException {
+        loadProperties();
+    }
+
+    private ConnectionFactory getInstance()  throws IOException, SQLException {
+        if(instance == null || instance.getConnection().isClosed()){
+            return new ConnectionFactory();
+        }
+        return instance;
+    }
+    public Connection getConnection(){
+        return conn;
+    }
+
+
+        private void loadProperties() throws IOException, SQLException {
+            InputStream is = getClass().getClassLoader.getResourceAsStream("application.properties");
+            Properties p = new Properties();
+            p.load(is);
+            conn= DriverManager.getConnection(p.getProperty("url"),p.getProperty("username"),p.getProperty("password"))
+
+        }
 }
+
+
+
