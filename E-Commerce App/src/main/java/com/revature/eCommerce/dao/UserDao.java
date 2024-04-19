@@ -6,10 +6,10 @@ public class UserDao {
 
 
 public User Login(String username, String password) {
-    //create router service
-    RouterService rSer = RouterService.getConnection();
+    //create User service
+    UserService uSer = UserService.getConnection();
     try (
-        PreparedStatement prepState = rSer.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?;")) {
+        PreparedStatement prepState = uSer.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?;")) {
         prepState.setString(1, username);
         prepState.setString(2, password);
         ResultSet rs = prepState.executeQuery();

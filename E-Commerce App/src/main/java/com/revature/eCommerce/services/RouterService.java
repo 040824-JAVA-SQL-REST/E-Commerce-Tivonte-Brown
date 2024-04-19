@@ -2,8 +2,8 @@ package com.revature.eCommerce.services;
 
 import com.revature.eCommerce.screens.BaseScreen;
 import com.revature.eCommerce.screens.HomeScreen;
-import com.revature.eCommerce.screens.LoginScreen;
 import com.revature.eCommerce.screens.StartScreen;
+import com.revature.eCommerce.screens.LoginScreen;
 import com.revature.eCommerce.screens.RegisterScreen;
 
 public class RouterService {
