@@ -1,5 +1,7 @@
 package com.revature.eCommerce.models;
 
+import java.util.UUID;
+
 public class User {
     private String userID;
     private String name;
@@ -12,15 +14,12 @@ public class User {
     public User() {
     }
 
-        public User(String userID, String name, String password, String email, String roleID,
-            int money) {
-        this.userID = userID;
+    public User(String name, String password, String email) {
+        this.userID = UUID.RandomUUID.toString();
         this.name = name;
         this.password = password;
         this.email = email;
-        this.purchaseHistory = purchaseHistory;
-        this.roleID = roleID;
-        this.money = money;
+        this.roleID = "Default";
     }
 
     public String getUserID() {
