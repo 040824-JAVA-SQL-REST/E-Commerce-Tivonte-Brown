@@ -11,7 +11,7 @@ public class ConnectionFactory{
     private static  ConnectionFactory instance;
     private Connection conn;
 
-    PRIVATE ConnectionFactory() throws IOException, SQLException {
+    private ConnectionFactory() throws IOException, SQLException {
         loadProperties();
     }
 
