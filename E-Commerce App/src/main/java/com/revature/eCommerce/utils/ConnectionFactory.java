@@ -1,7 +1,9 @@
+package com.revature.eCommerce.utils;
+
 import java.io.InputStream;
-import java.sql.Connections;
+import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException
+import java.sql.SQLException;
 import java.util.Properties;
 
 
@@ -32,6 +34,7 @@ public class ConnectionFactory{
 
         }
 }
+
 
 
 
