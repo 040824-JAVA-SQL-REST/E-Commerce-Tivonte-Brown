@@ -2,15 +2,15 @@ package com.revature.eCommerce.models;
 
 public class Role {
 
-
+    private String ID;
     private String roleName;
 
     public Role(){}
 
-    public Role(String roleName) {
-        this.roleID = roleID;
+    public Role(String roleID, String roleName) {
+        this.ID = roleID;
+        this.roleName = roleName;
     }
-
 
     public String getRoleName() {
         return roleName;
