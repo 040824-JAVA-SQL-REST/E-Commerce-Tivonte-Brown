@@ -14,6 +14,12 @@ public class RouterService {
     private final Scanner scan;
 
 
+    public RouterService(UserService userService, Scanner scan){
+        this.userService = userService;
+        this.scan = scan;
+    }
+
+
     public BaseScreen navigate(String path) {
 
         switch (path) {

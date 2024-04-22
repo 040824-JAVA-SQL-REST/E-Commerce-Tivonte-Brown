@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.io.IOException;
 
 
 public class ConnectionFactory{
@@ -15,7 +16,7 @@ public class ConnectionFactory{
         loadProperties();
     }
 
-    private ConnectionFactory getInstance()  throws IOException, SQLException {
+    public static ConnectionFactory getInstance()  throws IOException, SQLException {
         if(instance == null || instance.getConnection().isClosed()){
             return new ConnectionFactory();
         }
