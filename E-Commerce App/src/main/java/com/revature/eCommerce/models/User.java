@@ -7,6 +7,7 @@ public class User {
     private String name;
     private String password;
     private String email;
+    private String purchaseHistory;
     private String roleID;
     private int money;
 
@@ -14,8 +15,9 @@ public class User {
     public User() {
     }
 
+
     public User(String name, String password, String email) {
-        this.userID = UUID.RandomUUID.toString();
+        this.userID = UUID.randomUUID().toString();
         this.name = name;
         this.password = password;
         this.email = email;
