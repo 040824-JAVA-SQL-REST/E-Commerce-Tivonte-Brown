@@ -13,6 +13,7 @@ public class RegisterScreen extends BaseScreen{
         this.userService = userService;
         this.routerService = routerService;
         this.scan = scan;
+    }
 
     @Override
     public void startInterface() {
@@ -53,6 +54,7 @@ public class RegisterScreen extends BaseScreen{
 
 
     }
+
 
 
 }
