@@ -7,18 +7,25 @@ import com.revature.eCommerce.screens.HomeScreen;
 import com.revature.eCommerce.screens.StartScreen;
 import com.revature.eCommerce.screens.LoginScreen;
 import com.revature.eCommerce.screens.RegisterScreen;
+import com.revature.eCommerce.models.User;
 
 
 public class RouterService {
     private final UserService userService;
     private final Scanner scan;
-
+    private User session;
 
     public RouterService(UserService userService, Scanner scan){
         this.userService = userService;
         this.scan = scan;
     }
 
+    public RouterService(UserService userService, Scanner scan, User session){
+        this.userService = userService;
+        this.scan = scan;
+        this.session = session;
+
+    }
 
     public BaseScreen navigate(String path) {
 

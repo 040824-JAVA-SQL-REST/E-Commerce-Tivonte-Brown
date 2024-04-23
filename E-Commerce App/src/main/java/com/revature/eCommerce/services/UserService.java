@@ -1,6 +1,7 @@
 package com.revature.eCommerce.services;
 
 import java.util.List;
+import org.mindrot.jbcrypt.Bcrypt;
 
 import com.revature.eCommerce.dao.UserDao;
 import com.revature.eCommerce.models.User;
@@ -15,7 +16,7 @@ public class UserService {
 
     }
 
-    public boolean isUniqueUsername() {
+    public boolean isUniqueUsername(String name) {
         List<User> users = userDao.findAll();
         return users.stream().noneMatch(u -> u.getName().equals(name));
     }
