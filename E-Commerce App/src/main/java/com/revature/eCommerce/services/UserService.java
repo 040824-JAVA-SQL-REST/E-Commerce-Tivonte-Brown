@@ -1,10 +1,23 @@
 package com.revature.eCommerce.services;
 
+import java.util.List;
+
+import com.revature.eCommerce.dao.UserDao;
+import com.revature.eCommerce.models.User;
+
+
 public class UserService {
+    private final UserDao userDao;
+
+
+    public UserService(UserDao userDao){
+        this.userDao = userDao;
+
+    }
 
     public boolean isUniqueUsername() {
-        //ToDO
-        return true;
+        List<User> users = userDao.findAll();
+        return users.stream().noneMatch(u -> u.getName().equals(name));
     }
 
     public boolean isValidUsername(String username){
@@ -13,7 +26,8 @@ public class UserService {
     }
 
     public boolean isValidPassword(String password){
-        //Minimum eight characters, at least one letter, one number and one special character:
+        //Minimum eight characters, at least one letter, one number and one special character
+
         return password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
     }
 }
