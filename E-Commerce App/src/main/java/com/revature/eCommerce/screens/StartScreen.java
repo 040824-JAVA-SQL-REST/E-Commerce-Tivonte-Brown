@@ -16,12 +16,12 @@ public class StartScreen extends BaseScreen{
     public void startInterface() {
         while (true) {
             clearScreen();
-            System.out.println(x: "Interdimensional Shop!");
-            System.out.println(x:"\n[1] Login");
-            System.out.println(x:"[2] Register");
-            System.out.println(x:"[x] Exit");
+            System.out.println("Interdimensional Shop!");
+            System.out.println("\n[1] Login");
+            System.out.println("[2] Register");
+            System.out.println("[x] Exit");
 
-            System.out.print(s:"\nEnter: ");
+            System.out.print("\nEnter: ");
             String choice = scan.nextLine();
 
             switch (choice){

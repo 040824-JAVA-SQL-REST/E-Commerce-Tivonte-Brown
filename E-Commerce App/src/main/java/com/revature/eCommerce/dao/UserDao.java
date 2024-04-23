@@ -61,9 +61,9 @@ public class UserDao implements CrudDao<User> {
                 user.setRoleID(rs.getString("roleID"));
             }
         } catch (SQLException e){
-            throw new RuntimeException("Can't connect to database")
+            throw new RuntimeException("Can't connect to database");
         }catch (IOException e) {
-            throw new RuntimeException("Can't find application.properties file")
+            throw new RuntimeException("Can't find application.properties file");
         }
         return users;
 

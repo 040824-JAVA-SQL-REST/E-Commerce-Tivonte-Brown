@@ -13,7 +13,7 @@ public abstract class BaseScreen {
         System.out.flush();
     }
 
-    protected pause(Scanner scan)
+    protected void pause(Scanner scan)
 
         System.out.print(s: "Press enter to continue...");
         scan.nextLine();
