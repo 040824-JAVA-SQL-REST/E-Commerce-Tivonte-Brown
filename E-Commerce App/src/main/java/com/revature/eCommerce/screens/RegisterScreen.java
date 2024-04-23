@@ -3,6 +3,7 @@ package com.revature.eCommerce.screens;
 import java.util.Scanner;
 import com.revature.eCommerce.services.RouterService;
 import com.revature.eCommerce.services.UserService;
+import com.revature.eCommerce.models.User;
 
 public class RegisterScreen extends BaseScreen{
     private final UserService userService;
@@ -15,14 +16,19 @@ public class RegisterScreen extends BaseScreen{
         this.scan = scan;
     }
 
+    private String username = "";
+    private String password = "";
+    private String email = "";
+
     @Override
     public void startInterface() {
+
         while (true) {
             clearScreen();
             System.out.println("Creating user... ");
 
             System.out.print("\nUsername: ");
-            String username = scan.nextLine();
+            username = scan.nextLine();
 
             if (!userService.isValidUsername (username)) {
                 clearScreen();
@@ -32,28 +38,34 @@ public class RegisterScreen extends BaseScreen{
             }
 
             System.out.print("\nEmail: ");
-            String email = scan.nextLine();
+            email = scan.nextLine();
 
-            while (true) {
-                System.out.println("Creating user ...");
-                clearScreen();
-                System.out.print("\nPassword: ");
-                String password = scan.nextLine();
-                if (!userService.isValidPassword(password)) {
+
+            System.out.print("\nPassword: ");
+            password = scan.nextLine();
+            if (!userService.isValidPassword(password)) {
                     clearScreen();
                     System.out.println("Invalid password!");
                     pause(scan);
                     continue;
                 }
-                break;
 
-            }
+
+
             // Save logic
+            User newUser = new User(username, password, email);
+            userService.save(newUser);
+
+            clearScreen();
+            System.out.println("Account created successfully!") ;
+            pause(scan);
             break;
         }
 
 
     }
+
+}
 
 
 

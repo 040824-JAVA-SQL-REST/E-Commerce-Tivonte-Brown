@@ -17,7 +17,7 @@ public class UserDao implements CrudDao<User> {
     public void save(User obj) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
                 PreparedStatement ps = conn
-                .prepareStatement("INSERT INTO Account (userID, name, password, email, roleID) VALUES (?, ?, ?, ?, ?)")) {
+                .prepareStatement("INSERT INTO account (userID, name, password, email, roleID) VALUES (?, ?, ?, ?, ?)")) {
             ps.setString(1, obj.getUserID());
             ps.setString(2, obj.getName());
             ps.setString(3, obj.getPassword());
@@ -50,7 +50,7 @@ public class UserDao implements CrudDao<User> {
         List<User> users = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Account");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM account");
         ResultSet rs = ps.executeQuery())  {
             while (rs.next()) {
                 User user = new User();

@@ -1,10 +1,11 @@
 package com.revature.eCommerce.services;
 
 import java.util.List;
-import org.mindrot.jbcrypt.Bcrypt;
+//import org.mindrot.jbcrypt.Bcrypt;
 
 import com.revature.eCommerce.dao.UserDao;
 import com.revature.eCommerce.models.User;
+import com.revature.eCommerce.screens.StartScreen;
 
 
 public class UserService {
@@ -14,6 +15,11 @@ public class UserService {
     public UserService(UserDao userDao){
         this.userDao = userDao;
 
+
+    }
+
+    public void save(User user){
+        userDao.save(user);
     }
 
     public boolean isUniqueUsername(String name) {
