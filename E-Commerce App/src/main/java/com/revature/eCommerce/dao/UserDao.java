@@ -15,9 +15,22 @@ public class UserDao implements CrudDao<User> {
 
     @Override
     public void save(User obj) {
-        // TODO Auto-generated method stub
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+                PreparedStatement ps = conn
+                .prepareStatement("INSERT INTO Account (userID, name, password, email, roleID) VALUES (?, ?, ?, ?, ?)")) {
+            ps.setString(1, obj.getUserID());
+            ps.setString(2, obj.getName());
+            ps.setString(3, obj.getPassword());
+            ps.setString(4, obj.getEmail());
+            ps.setString(5, obj.getRoleID());
 
-    }
+            ps.executeUpdate();
+            } catch (SQLException e) {
+            throw new RuntimeException("Error inserting user into database", e);
+            } catch (IOException e) {
+            throw new RuntimeException("Can't find application.properties file", e);
+        }
+   }
 
     @Override
     public void update(User obj) {
