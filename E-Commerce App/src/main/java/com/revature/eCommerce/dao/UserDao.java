@@ -1,8 +1,15 @@
 package com.revature.eCommerce.dao;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.eCommerce.models.*;
+import com.revature.eCommerce.utils.ConnectionFactory;
 
 public class UserDao implements CrudDao<User> {
 
@@ -27,8 +34,29 @@ public class UserDao implements CrudDao<User> {
 
     @Override
     public List<User> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        List<User> users = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Account");
+        ResultSet rs = ps.executeQuery())  {
+            while (rs.next()) {
+                User user = new User();
+                user.setUserID(rs.getString("userID"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setRoleID(rs.getString("roleID"));
+            }
+        } catch (SQLException e){
+            throw new RuntimeException("Can't connect to database")
+        }catch (IOException e) {
+            throw new RuntimeException("Can't find application.properties file")
+        }
+        return users;
+
+
+
+
     }
 
     @Override
@@ -37,11 +65,12 @@ public class UserDao implements CrudDao<User> {
         return null;
     }
 
+
 /*     public User Login(String username, String password) {
         //create User service
         UserService uSer = UserService.getConnection();
         try (
-            PreparedStatement prepState = uSer.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?;")) {
+            PreparedStatement prepState = uSer.prepareStatement("SELECT * FROM account WHERE username = ? AND password = ?;")) {
             prepState.setString(1, username);
             prepState.setString(2, password);
             ResultSet rs = prepState.executeQuery();
