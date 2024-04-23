@@ -9,7 +9,7 @@ public class User {
     private String email;
     private String purchaseHistory;
     private String roleID;
-    private int money;
+    private long money;
 
 
     public User() {
@@ -21,6 +21,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.money = 0;
         this.roleID = "Default";
     }
 
