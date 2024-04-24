@@ -1,7 +1,7 @@
 package com.revature.eCommerce.services;
 
 import java.util.List;
-//import org.mindrot.jbcrypt.Bcrypt;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.eCommerce.dao.UserDao;
 import com.revature.eCommerce.models.User;

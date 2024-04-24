@@ -21,7 +21,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.money = 0;
+        this.money = 0L;
         this.roleID = "Default";
     }
 
@@ -75,12 +75,12 @@ public class User {
     }
 
 
-    public int getMoney() {
+    public long getMoney() {
         return money;
     }
 
 
-    public void setMoney(int money) {
+    public void setMoney(long money) {
         this.money = money;
     }
 
