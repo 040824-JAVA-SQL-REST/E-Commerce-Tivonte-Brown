@@ -9,7 +9,6 @@ import com.revature.eCommerce.services.UserService;
 import com.revature.eCommerce.utils.ConnectionFactory;
 import com.revature.eCommerce.dao.UserDao;
 import com.revature.eCommerce.models.User;
-import com.revature.eCommerce.screens.StartScreen;
 
 
 public class App {
@@ -23,6 +22,11 @@ public class App {
         new RouterService(new UserService(new UserDao()), scan, session)
              .navigate("/start")
              .startInterface();
+
+/*         new RouterService(new RoleService(new RoleDAO()), new UserService(new UserDao()), scan, session)
+             .navigate("/start")
+             .startInterface();
+ */
 
         scan.close();
     }

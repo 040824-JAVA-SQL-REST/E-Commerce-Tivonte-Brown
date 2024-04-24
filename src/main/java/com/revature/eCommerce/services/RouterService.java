@@ -11,6 +11,7 @@ import com.revature.eCommerce.models.User;
 
 
 public class RouterService {
+    //private final RoleService roleService;
     private final UserService userService;
     private final Scanner scan;
     private User session;
@@ -26,6 +27,13 @@ public class RouterService {
         this.session = session;
 
     }
+
+/*     public RouterService(RoleService roleService, UserService userService, Scanner scan, User session){
+        this.roleService = roleService;
+        this.userService = userService;
+        this.scan = scan;
+        this.session = session;
+    } */
 
     public BaseScreen navigate(String path) {
 
