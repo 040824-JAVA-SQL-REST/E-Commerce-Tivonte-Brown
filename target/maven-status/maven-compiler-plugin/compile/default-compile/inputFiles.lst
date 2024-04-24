@@ -1,6 +1,5 @@
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\RoleDao.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\models\User.java
-C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\requests\NewLoginRequest.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\UserDao.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\CartService.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\screens\LoginScreen.java
@@ -13,7 +12,6 @@ C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Co
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\request\NewLoginRequest.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\screens\HomeScreen.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\App.java
-C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\requests\NewRegisterRequest.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\utils\ConnectionFactory.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\models\Role.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\request\NewRegisterRequest.java
