@@ -12,8 +12,9 @@ public class RoleService {
     public String getRoleIDByName(String name){
 
         return roleDao.findAll().stream()
-        .filter(r -> r.getName().equals(name))
-        .findFirst().get().getRoleID();
+        .filter(r -> r.getRoleName().equals(name))
+        .findFirst().get().getID();
+    }
     }
 
 }
