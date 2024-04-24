@@ -93,8 +93,8 @@ public class UserDao implements CrudDao<User> {
             if (rs.next()) {
                 // if a user with the given username and password exists in the database, return a User
 
-                User accountL =  new User(rs.getInt("UserID"),
-                rs.getString("username"), rs.getString("password"));
+                User accountL =  new User(rs.getInt("userID"),
+                rs.getString("uname"), rs.getString("password"));
                 return accountL;
 
             }
