@@ -7,8 +7,8 @@ public class Role {
 
     public Role(){}
 
-    public Role(String roleID, String roleName) {
-        this.ID = roleID;
+    public Role(String ID, String roleName) {
+        this.ID = ID;
         this.roleName = roleName;
     }
 
@@ -17,8 +17,8 @@ public class Role {
         return ID;
     }
 
-    public void setID(String iD) {
-        ID = iD;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getRoleName() {
@@ -28,5 +28,4 @@ public class Role {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
-
 }

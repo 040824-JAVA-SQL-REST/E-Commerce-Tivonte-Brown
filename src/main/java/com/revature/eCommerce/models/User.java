@@ -12,7 +12,6 @@ public class User {
     private long money;
 
 
-
     public User() {
     }
 
@@ -63,16 +62,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-
-    public String getPurchaseHistory() {
-        return purchaseHistory;
-    }
-
-
-    public void setPurchaseHistory(String purchaseHistory) {
-        this.purchaseHistory = purchaseHistory;
     }
 
 
