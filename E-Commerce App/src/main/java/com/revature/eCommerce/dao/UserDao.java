@@ -59,6 +59,8 @@ public class UserDao implements CrudDao<User> {
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
                 user.setRoleID(rs.getString("roleID"));
+
+                users.add(user);
             }
         } catch (SQLException e){
             throw new RuntimeException("Can't connect to database");
