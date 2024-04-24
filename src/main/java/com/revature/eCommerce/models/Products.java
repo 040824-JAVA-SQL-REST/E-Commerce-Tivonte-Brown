@@ -12,7 +12,6 @@ public class Products {
         this.productID = productID;
         this.seller = seller;
         this.productValue = productValue;
-        this.orderHistory = orderHistory;
     }
 
     public String getProductID() {
