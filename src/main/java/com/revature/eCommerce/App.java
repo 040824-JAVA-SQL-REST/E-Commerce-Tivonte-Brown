@@ -21,6 +21,7 @@ public class App {
 
         new RouterService(new UserService(new UserDao()), scan, session)
              .navigate("/start")
+
              .startInterface();
 
 

@@ -36,12 +36,12 @@ public class RoleDao implements CrudDao<Role>  {
         List<Role> roles = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM role");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM roles");
         ResultSet rs = ps.executeQuery())  {
             while (rs.next()) {
                 Role role = new Role();
                 role.setID(rs.getString("id"));
-                role.setRoleName(rs.getString("name"));
+                role.setRoleName(rs.getString("roleName"));
 
                 roles.add(role);
             }

@@ -1,6 +1,9 @@
 package com.revature.eCommerce.screens;
 
 import java.util.Scanner;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.revature.eCommerce.services.RouterService;
 import com.revature.eCommerce.services.UserService;
 import com.revature.eCommerce.models.User;
@@ -51,9 +54,10 @@ public class RegisterScreen extends BaseScreen{
                 }
 
 
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
             // Save logic
-            User newUser = new User(username, password, email);
+            User newUser = new User(username, hashedPassword, email);
             userService.save(newUser);
 
             clearScreen();

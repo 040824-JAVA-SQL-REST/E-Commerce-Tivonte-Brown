@@ -22,7 +22,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.money = 0L;
-        this.roleID = "Default";
+        this.roleID = "10RW-6PNEHVZ-SS2GWP-GW8MH-1CXX";
     }
 
     public String getUserID() {
