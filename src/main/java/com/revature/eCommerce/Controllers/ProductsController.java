@@ -20,29 +20,17 @@ public class ProductsController {
 
     public ProductsController(ProductsService productsService) {
         this.productsService = productsService;
+    }
 
-        //TODO edit into Product creat controller
+
+        //TODO edit into Product create controller
         public void create(Context ctx){
+
             try{
                 NewProductsRequest req = ctx.bodyAsClass(NewProductsRequest.class);
-                //ctx.json(req);
-                if (!userService.isValidUsername(req.getName())){
-                    ctx.status(400); //Bad request
-                    return;
-                }
 
-                if (!userService.isUniqueUsername(req.getName())){
-                    ctx.status(409); //Conflict
-                    return;
-                }
-
-                if (!userService.isValidPassword(req.getPassword())){
-                    ctx.status(400); //Bad request
-                    return;
-                }
-
-                User newUser = new User(req);
-                newUser = userService.save(newUser);
+                Products newProduct = new Products(req);
+                newProduct = productsService.save(newProduct);
 
                 ctx.status(201); //Created
 
@@ -50,7 +38,7 @@ public class ProductsController {
                 ctx.status(500); //Internal Error
                 e.printStackTrace();
             }
-        }
+
 
     }
 }

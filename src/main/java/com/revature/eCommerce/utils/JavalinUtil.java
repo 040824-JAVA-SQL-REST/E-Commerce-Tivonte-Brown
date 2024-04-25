@@ -20,6 +20,7 @@ public class JavalinUtil {
 
     public Javalin getJavalin(){
         UserController userController = new UserController(getUserService());
+        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()));
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -27,20 +28,14 @@ public class JavalinUtil {
                     post("/register", userController::register);
                     get("/login", userController::login);
                 });
+                    path("/products", () -> {
+                    post("/create", productsController::create);
+                });
             });
         });
     }
 
 
-        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()));
-
-        return Javalin.create(config -> {
-            config.router.apiBuilder(()-> {
-                path("/products", () -> {
-                    post("/create", ProductsController::create);
-                });
-            });
-        });
 
     private UserService getUserService(){
         return new UserService(new RoleService(new RoleDao()), new UserDao());
