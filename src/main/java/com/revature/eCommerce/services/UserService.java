@@ -20,13 +20,14 @@ public class UserService {
         this.userDao = userDao;
     }
 
-   public void save(User user){
+   public User save(User user){
         String defaultID = roleService.getRoleIDByName("DEFAULT");
         if (defaultID == null || defaultID.isEmpty()) {
             throw new ResourceNotFoundException("DEFAULT role not found!");
         }
         user.setRoleID(defaultID);
         userDao.save(user);
+        return user;
     }
 
 
@@ -39,7 +40,6 @@ public class UserService {
         return userDao.findAll().stream()
         .filter(u -> u.getName().equals(name) && BCrypt.checkpw(password, u.getPassword())).findFirst();
     }
-
 
 
     public boolean isUniqueUsername(String name) {
@@ -57,4 +57,6 @@ public class UserService {
 
         return password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$");
     }
+
+    //Add is isUniqueEmail
 }

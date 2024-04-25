@@ -16,19 +16,21 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 public class JavalinUtil {
 
     public Javalin getJavalin(){
-        UserController userController = new UserController();
+        UserController userController = new UserController(getUserService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
                 path("/user", () -> {
                     post("/register", userController::register);
-                    post("/login", userController::login);
+                    get("/login", userController::login);
                 });
             });
         });
     }
+
+    private UserService getUserService(){
+        return new UserService(new RoleService(new RoleDao()), new UserDao());
+    }
 }
 
-private UserService getUserService(){
-    return new UserService(new RoleService(new RoleDao()), new UserDao());
-}
+

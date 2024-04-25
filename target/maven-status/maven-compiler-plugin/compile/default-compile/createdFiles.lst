@@ -19,6 +19,7 @@ com\revature\eCommerce\dao\UserDao.class
 com\revature\eCommerce\models\User.class
 com\revature\eCommerce\models\Wallet.class
 com\revature\eCommerce\utils\ConnectionFactory.class
+com\revature\eCommerce\utils\JavalinUtil.class
 com\revature\eCommerce\services\ProductsService.class
 com\revature\eCommerce\Controllers\UserController.class
 com\revature\eCommerce\dto\request\NewRegisterRequest.class
