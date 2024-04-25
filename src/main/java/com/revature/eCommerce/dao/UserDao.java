@@ -78,30 +78,4 @@ public class UserDao implements CrudDao<User> {
         return null;
     }
 
-
-/*     public User Login(String username, String password) {
-        //create User service
-        UserService uSer = UserService.getConnection();
-        try (
-            PreparedStatement prepState = uSer.prepareStatement("SELECT * FROM accounts WHERE username = ? AND password = ?;")) {
-            prepState.setString(1, username);
-            prepState.setString(2, password);
-            ResultSet rs = prepState.executeQuery();
-
-            if (rs.next()) {
-                // if a user with the given username and password exists in the database, return a User
-
-                User accountL =  new User(rs.getInt("userID"),
-                rs.getString("name"), rs.getString("password"));
-                return accountL;
-
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        // if no user was found, return null
-        return null;
-    } */
-
 }
