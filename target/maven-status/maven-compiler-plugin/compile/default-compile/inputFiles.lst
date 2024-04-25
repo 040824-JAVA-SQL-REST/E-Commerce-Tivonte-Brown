@@ -28,6 +28,7 @@ C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Co
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\ProductsDao.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\WalletService.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\WalletDao.java
+C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\request\NewProductsRequest.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\models\Wallet.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\RoleService.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\CartDao.java
