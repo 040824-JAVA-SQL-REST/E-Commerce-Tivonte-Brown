@@ -25,16 +25,14 @@ public class UserService {
         if (defaultID == null || defaultID.isEmpty()) {
             throw new ResourceNotFoundException("DEFAULT role not found!");
         }
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
         user.setRoleID(defaultID);
+        user.setPassword(hashedPassword);
         userDao.save(user);
         return user;
     }
 
 
-/*
-    public void save(User user){
-        userDao.save(user);
-    } */
 
     public Optional<User> login(String name, String password){
         return userDao.findAll().stream()

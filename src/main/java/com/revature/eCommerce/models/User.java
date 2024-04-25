@@ -2,6 +2,7 @@ package com.revature.eCommerce.models;
 
 import java.util.UUID;
 
+import com.revature.eCommerce.dto.request.NewLoginRequest;
 import com.revature.eCommerce.dto.request.NewRegisterRequest;
 
 public class User {
@@ -22,6 +23,12 @@ public class User {
         this.name = req.getName();
         this.password = req.getPassword();
         this.email = req.getEmail();
+
+    }
+
+    public User (NewLoginRequest req){
+        this.name = req.getName();
+        this.password = req.getPassword();
 
     }
 
