@@ -1,6 +1,7 @@
 package com.revature.eCommerce.services;
 
 import java.util.List;
+import java.util.Optional;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.eCommerce.dao.UserDao;
@@ -10,31 +11,36 @@ import com.revature.eCommerce.utils.ResourceNotFoundException;
 
 public class UserService {
     private final UserDao userDao;
-    //private final RoleService roleService;
+    private final RoleService roleService;
 
-    public UserService(UserDao userDao){
-        this.userDao = userDao;
 
-    }
 
-    public void save(User user){
-        userDao.save(user);
-    }
-
-/*      public UserService(RoleService roleService, UserDao userDao){
+    public UserService(RoleService roleService, UserDao userDao){
         this.roleService = roleService;
         this.userDao = userDao;
     }
- */
 
-/*     public void save(User user){
-        String defaultID = roleService.getRoleIDByName{"DEFAULT"};
+   public void save(User user){
+        String defaultID = roleService.getRoleIDByName("DEFAULT");
         if (defaultID == null || defaultID.isEmpty()) {
             throw new ResourceNotFoundException("DEFAULT role not found!");
         }
+        user.setRoleID(defaultID);
         userDao.save(user);
     }
- */
+
+
+/*
+    public void save(User user){
+        userDao.save(user);
+    } */
+
+    public Optional<User> login(String name, String password){
+        return userDao.findAll().stream()
+        .filter(u -> u.getName().equals(name) && BCrypt.checkpw(password, u.getPassword())).findFirst();
+    }
+
+
 
     public boolean isUniqueUsername(String name) {
         List<User> users = userDao.findAll();

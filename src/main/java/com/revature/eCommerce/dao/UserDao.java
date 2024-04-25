@@ -17,7 +17,7 @@ public class UserDao implements CrudDao<User> {
     public void save(User obj) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
                 PreparedStatement ps = conn
-                .prepareStatement("INSERT INTO account (userID, name, password, email, roleID) VALUES (?, ?, ?, ?, ?)")) {
+                .prepareStatement("INSERT INTO accounts (userID, name, password, email, roleID) VALUES (?, ?, ?, ?, ?)")) {
             ps.setString(1, obj.getUserID());
             ps.setString(2, obj.getName());
             ps.setString(3, obj.getPassword());
@@ -50,7 +50,7 @@ public class UserDao implements CrudDao<User> {
         List<User> users = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM account");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM accounts");
         ResultSet rs = ps.executeQuery())  {
             while (rs.next()) {
                 User user = new User();
@@ -77,31 +77,5 @@ public class UserDao implements CrudDao<User> {
         // TODO Auto-generated method stub
         return null;
     }
-
-
-/*     public User Login(String username, String password) {
-        //create User service
-        UserService uSer = UserService.getConnection();
-        try (
-            PreparedStatement prepState = uSer.prepareStatement("SELECT * FROM account WHERE username = ? AND password = ?;")) {
-            prepState.setString(1, username);
-            prepState.setString(2, password);
-            ResultSet rs = prepState.executeQuery();
-
-            if (rs.next()) {
-                // if a user with the given username and password exists in the database, return a User
-
-                User accountL =  new User(rs.getInt("userID"),
-                rs.getString("name"), rs.getString("password"));
-                return accountL;
-
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        // if no user was found, return null
-        return null;
-    } */
 
 }
