@@ -3,6 +3,7 @@ package com.revature.eCommerce.models;
 public class Products {
 
     private String productID;
+    private String productName;
     private int productValue;
     private String seller;
 
