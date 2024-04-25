@@ -8,6 +8,7 @@ import com.revature.eCommerce.dao.UserDao;
 import com.revature.eCommerce.dao.RoleDao;
 import com.revature.eCommerce.models.User;
 import com.revature.eCommerce.Controllers.UserController;
+import com.revature.eCommerce.utils.JavalinUtil;
 
 import java.util.Scanner;
 import java.sql.SQLException;
@@ -18,22 +19,9 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class App {
     public static void main( String[] args ) throws SQLException, IOException  {
-            App app = new App();
-            UserController userController = new UserController();
 
-            Javalin.create(config -> {
-                config.router.apiBuilder(()-> {
-                    path("/user", () -> {
-                        post("/register", userController::register);
-                    });
-                });
-            }).start(7070);
-
+         new JavalinUtil().getJavalin().start(7070);
     }
-
-        private UserService getUserService(){
-            return new UserService(new RoleService(new RoleDao()), new UserDao());
-        }
 
 }
 

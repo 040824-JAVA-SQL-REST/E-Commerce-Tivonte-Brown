@@ -7,4 +7,8 @@ public class UserController {
         ctx.result("User");
     }
 
+    public void login(Context ctx){
+        ctx.result();
+    }
+
 }
