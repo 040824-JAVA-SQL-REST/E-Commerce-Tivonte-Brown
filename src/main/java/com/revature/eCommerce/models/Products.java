@@ -24,6 +24,8 @@ public class Products {
         this.productValue = productValue;
     }
 
+    //TODO add a constructor including seller
+
     public String getProductID() {
         return productID;
     }

@@ -4,6 +4,7 @@ import com.revature.eCommerce.dto.request.NewLoginRequest;
 import com.revature.eCommerce.dto.request.NewRegisterRequest;
 import com.revature.eCommerce.services.UserService;
 import com.revature.eCommerce.models.User;
+import com.revature.eCommerce.dto.responses.Principal;
 import io.javalin.http.Context;
 import java.util.*;
 
@@ -37,6 +38,7 @@ public class UserController {
                 return;
             }
 
+            //Save User
             User newUser = new User(req);
             newUser = userService.save(newUser);
 
@@ -53,7 +55,6 @@ public class UserController {
             Map<String, String> errors = new HashMap<>();
 
             NewLoginRequest req = ctx.bodyAsClass(NewLoginRequest.class);
-            //ctx.json(req);
 
             Optional<User> loginUser = userService.login(req.getName(), req.getPassword());
             if (loginUser.isEmpty()){
@@ -63,6 +64,8 @@ public class UserController {
                 return;
             }
 
+            User foundUser = loginUser.get();
+            Principal principal = new Principal (foundUser);
             ctx.status(200); //ok
 
         } catch (Exception e){

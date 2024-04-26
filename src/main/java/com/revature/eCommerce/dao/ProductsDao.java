@@ -30,6 +30,7 @@ public class ProductsDao implements CrudDao<Products> {
             throw new RuntimeException("Can't find application.properties file", e);
         }
     }
+    //update and delete products as admin
 
     @Override
     public void update(Products obj) {

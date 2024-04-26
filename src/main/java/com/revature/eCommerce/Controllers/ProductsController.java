@@ -23,7 +23,6 @@ public class ProductsController {
     }
 
 
-        //TODO edit into Product create controller
         public void create(Context ctx){
 
             try{
