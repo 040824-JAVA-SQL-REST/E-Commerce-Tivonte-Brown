@@ -1,30 +1,20 @@
-package com.revature.eCommerce.models;
+package com.revature.eCommerce.dto.request;
 
-import com.revature.eCommerce.dto.request.NewProductsRequest;
-import java.util.UUID;
-
-public class Products {
+public class NewProductsRequest {
 
     private String productID;
     private String productName;
     private Long productValue;
     private String seller;
 
-    public Products (){}
+    public NewProductsRequest(){
 
-    public Products(NewProductsRequest req){
-        this.productID = UUID.randomUUID().toString();
-        this.productName = req.getProductName();
-        this.productValue = req.getProductValue();
     }
 
-    public Products(String productName, Long productValue) {
-        this.productID = UUID.randomUUID().toString();
+    public NewProductsRequest(String productName, Long productValue){
         this.productName = productName;
         this.productValue = productValue;
     }
-
-    //TODO add a constructor including seller
 
     public String getProductID() {
         return productID;
@@ -57,7 +47,4 @@ public class Products {
     public void setSeller(String seller) {
         this.seller = seller;
     }
-
-
-
 }

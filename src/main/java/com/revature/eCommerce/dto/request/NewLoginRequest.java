@@ -5,7 +5,11 @@ public class NewLoginRequest {
     private String name;
     private String password;
 
-    public NewLoginRequest(String name, String password, String email) {
+    public NewLoginRequest (){
+
+    }
+
+    public NewLoginRequest(String name, String password) {
         this.name = name;
         this.password = password;
     }

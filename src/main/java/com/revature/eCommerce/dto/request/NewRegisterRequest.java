@@ -5,6 +5,10 @@ public class NewRegisterRequest {
     private String password;
     private String email;
 
+    public NewRegisterRequest(){
+
+    }
+
     public NewRegisterRequest(String name, String password, String email) {
         this.name = name;
         this.password = password;

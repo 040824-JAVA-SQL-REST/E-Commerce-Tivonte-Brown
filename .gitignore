@@ -23,4 +23,9 @@
 hs_err_pid*
 replay_pid*
 
-target/
+/target/
+/.vscode/
+/.vs/
+
+/resources/
+application.properties
