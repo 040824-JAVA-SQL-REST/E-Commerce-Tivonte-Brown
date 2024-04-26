@@ -10,9 +10,9 @@ public class User {
     private String name;
     private String password;
     private String email;
-    private String purchaseHistory;
     private String roleID;
     private long money;
+    private Role role;
 
 
     public User() {
@@ -39,6 +39,15 @@ public class User {
         this.email = email;
         this.money = 0L;
         this.roleID = "DEFAULT";
+    }
+
+    public User(String name, String password, String email, String roleID) {
+        this.userID = UUID.randomUUID().toString();
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.money = 0L;
+        this.roleID = roleID;
     }
 
     public String getUserID() {
@@ -98,6 +107,15 @@ public class User {
 
     public void setMoney(long money) {
         this.money = money;
+    }
+
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 }

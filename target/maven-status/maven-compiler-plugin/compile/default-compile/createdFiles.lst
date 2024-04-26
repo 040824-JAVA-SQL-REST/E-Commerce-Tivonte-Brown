@@ -16,6 +16,7 @@ com\revature\eCommerce\screens\BaseScreen.class
 com\revature\eCommerce\screens\StartScreen.class
 com\revature\eCommerce\services\WalletService.class
 com\revature\eCommerce\dao\UserDao.class
+com\revature\eCommerce\dto\responses\Principal.class
 com\revature\eCommerce\models\User.class
 com\revature\eCommerce\models\Wallet.class
 com\revature\eCommerce\utils\ConnectionFactory.class

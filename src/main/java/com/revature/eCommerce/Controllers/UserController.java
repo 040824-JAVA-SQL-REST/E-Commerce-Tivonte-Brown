@@ -4,6 +4,7 @@ import com.revature.eCommerce.dto.request.NewLoginRequest;
 import com.revature.eCommerce.dto.request.NewRegisterRequest;
 import com.revature.eCommerce.services.UserService;
 import com.revature.eCommerce.models.User;
+import com.revature.eCommerce.models.Role;
 import com.revature.eCommerce.dto.responses.Principal;
 import io.javalin.http.Context;
 import java.util.*;
@@ -22,7 +23,7 @@ public class UserController {
     public void register(Context ctx){
         try{
             NewRegisterRequest req = ctx.bodyAsClass(NewRegisterRequest.class);
-            //ctx.json(req);
+
             if (!userService.isValidUsername(req.getName())){
                 ctx.status(400); //Bad request
                 return;
@@ -64,8 +65,10 @@ public class UserController {
                 return;
             }
 
+            //Sends user info back to postman
             User foundUser = loginUser.get();
             Principal principal = new Principal (foundUser);
+            ctx.json(principal);
             ctx.status(200); //ok
 
         } catch (Exception e){

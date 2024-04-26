@@ -35,7 +35,7 @@ public class UserService {
 
 
     public Optional<User> login(String name, String password){
-        return userDao.findAll().stream()
+        return userDao.findAllWithRole().stream()
         .filter(u -> u.getName().equals(name) && BCrypt.checkpw(password, u.getPassword())).findFirst();
     }
 

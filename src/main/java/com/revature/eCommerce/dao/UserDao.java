@@ -72,6 +72,37 @@ public class UserDao implements CrudDao<User> {
 
     }
 
+
+    public List<User> findAllWithRole() {
+        List<User> users = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM accounts_with_roles");
+        ResultSet rs = ps.executeQuery())  {
+            while (rs.next()) {
+                User user = new User();
+                Role role = new Role();
+                user.setUserID(rs.getString("userID"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setRoleID(rs.getString("roleID"));
+                role.setID(rs.getString("id"));
+                role.setRoleName(rs.getString("roleName"));
+                user.setRole(role);
+
+                users.add(user);
+            }
+        } catch (SQLException e){
+            throw new RuntimeException("Can't connect to database");
+        }catch (IOException e) {
+            throw new RuntimeException("Can't find application.properties file");
+        }
+        return users;
+
+
+    }
+
     @Override
     public User findById(String id) {
         // TODO Auto-generated method stub

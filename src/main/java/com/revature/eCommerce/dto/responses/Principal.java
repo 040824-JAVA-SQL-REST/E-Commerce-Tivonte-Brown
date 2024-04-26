@@ -4,31 +4,34 @@ import com.revature.eCommerce.models.Role;
 import com.revature.eCommerce.models.User;
 
 public class Principal {
+    private String userID;
     private String name;
-    private String password;
     private Role role;
 
     public Principal (){
 
     }
 
-    public Principal (User user, Role role){
+    public Principal (User user){
+        this.userID = user.getUserID();
         this.name = user.getName();
-        this.password = user.getPassword();
-        this.role = role;
+        this.role = user.getRole();
 
     }
 
 
-    public Principal(String name, String password, Role role) {
+    public Principal(String userID, String name, Role role) {
+        this.userID = userID;
         this.name = name;
-        this.password = password;
         this.role = role;
     }
 
-    public Principal(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getName() {
@@ -39,14 +42,6 @@ public class Principal {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -54,5 +49,7 @@ public class Principal {
     public void setRole(Role role) {
         this.role = role;
     }
+
+
 
 }
