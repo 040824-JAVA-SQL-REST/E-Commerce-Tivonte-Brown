@@ -1,34 +1,66 @@
 package com.revature.eCommerce.models;
 
 public class Cart {
+    private String cartID;
     private String buyer;
-    private String product;
+    private String productID;
+    private String productName;
     private long price;
     private int quantity;
 
     public Cart(){}
 
-    public Cart(String buyer, String product, long price, int quantity) {
+
+    public Cart(String cartID, String buyer, String productName, int quantity) {
+        this.cartID = cartID;
         this.buyer = buyer;
-        this.product = product;
+        this.productName = productName;
+        this.quantity = quantity;
+    }
+
+
+
+    public Cart(String cartID, String buyer, String productID, String productName, long price, int quantity) {
+        this.cartID = cartID;
+        this.buyer = buyer;
+        this.productID = productID;
+        this.productName = productName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getbuyer() {
+
+
+    public String getCartID() {
+        return cartID;
+    }
+
+    public void setCartID(String cartID) {
+        this.cartID = cartID;
+    }
+
+    public String getBuyer() {
         return buyer;
     }
 
-    public void setbuyer(String buyer) {
+    public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
 
-    public String getProduct() {
-        return product;
+    public String getProductID() {
+        return productID;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public long getPrice() {
@@ -46,7 +78,6 @@ public class Cart {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
 
 
 

@@ -22,6 +22,7 @@ public class JavalinUtil {
     public Javalin getJavalin() throws IOException{
         UserController userController = new UserController(getUserService(), new TokenService());
         ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()), new TokenService());
+        CartController cartController = new CartController(new CartService(new CartDao()), new TokenService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -33,6 +34,10 @@ public class JavalinUtil {
                     post("/create", productsController::create);
                     patch("/update", productsController::update);
                     delete("/delete", productsController::delete);
+                });
+                path("/cart", () -> {
+                    post("/addTo", cartController::addTo);
+                    delete("/delete", cartController::delete);
                 });
             });
         });

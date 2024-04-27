@@ -35,6 +35,7 @@ public class ProductsController {
                 if (token == null || token.isEmpty()) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
@@ -42,12 +43,14 @@ public class ProductsController {
                 if (principal == null) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
                 if(!principal.getRole().getRoleName().equalsIgnoreCase("admin")){
                     ctx.status(403);
                     errors.put("Error:", "Invalid authorization");
+                    ctx.json(errors);
                     return;
                 }
 
@@ -74,6 +77,7 @@ public class ProductsController {
                 if (token == null || token.isEmpty()) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
@@ -81,19 +85,21 @@ public class ProductsController {
                 if (principal == null) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
                 if(!principal.getRole().getRoleName().equalsIgnoreCase("admin")){
                     ctx.status(403);
                     errors.put("Error:", "Invalid authorization");
+                    ctx.json(errors);
                     return;
                 }
 
                 NewProductsDelete req = ctx.bodyAsClass(NewProductsDelete.class);
 
                 Products newProduct = new Products(req);
-                newProduct = productsService.save(newProduct);
+                newProduct = productsService.delete(newProduct);
 
                 ctx.status(201); //Created
 
@@ -113,6 +119,7 @@ public class ProductsController {
                 if (token == null || token.isEmpty()) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
@@ -120,19 +127,21 @@ public class ProductsController {
                 if (principal == null) {
                     ctx.status(401);
                     errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
                     return;
                 }
 
                 if(!principal.getRole().getRoleName().equalsIgnoreCase("admin")){
                     ctx.status(403);
                     errors.put("Error:", "Invalid authorization");
+                    ctx.json(errors);
                     return;
                 }
 
                 NewProductsUpdate req = ctx.bodyAsClass(NewProductsUpdate.class);
 
                 Products newProduct = new Products(req);
-                newProduct = productsService.save(newProduct);
+                newProduct = productsService.update(newProduct);
 
                 ctx.status(201); //Created
 

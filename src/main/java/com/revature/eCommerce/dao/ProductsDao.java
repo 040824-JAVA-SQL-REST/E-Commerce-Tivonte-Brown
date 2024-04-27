@@ -25,7 +25,7 @@ public class ProductsDao implements CrudDao<Products> {
 
             ps.executeUpdate();
             } catch (SQLException e) {
-            throw new RuntimeException("Error inserting user into database", e);
+            throw new RuntimeException("Error inserting product into database", e);
             } catch (IOException e) {
             throw new RuntimeException("Can't find application.properties file", e);
         }
