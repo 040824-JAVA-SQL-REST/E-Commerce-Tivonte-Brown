@@ -18,6 +18,21 @@ public class ProductsService {
 
         }
 
+        public Products delete(Products products){
+
+            productsDao.delete(products.getProductID());
+            return products;
+
+        }
+
+        public Products update(Products products){
+
+            productsDao.update(products);
+            return products;
+
+        }
+
+
 }
 
 

@@ -1,5 +1,6 @@
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\RoleDao.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\models\User.java
+C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\request\NewProductsUpdate.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\ProductsService.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\utils\JavalinUtil.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\UserDao.java
@@ -34,5 +35,7 @@ C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Co
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dao\CartDao.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\Controllers\UserController.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\responses\Principal.java
+C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\TokenService.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\screens\BaseScreen.java
+C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\dto\request\NewProductsDelete.java
 C:\Users\Doubl\Documents\Computer Science\Revature\E-Commerce-Tivonte-Brown\E-Commerce App\src\main\java\com\revature\eCommerce\services\UserService.java

@@ -9,19 +9,24 @@ import com.revature.eCommerce.dto.responses.Principal;
 import io.javalin.http.Context;
 import java.util.*;
 
-
+import com.revature.eCommerce.services.TokenService;
 import java.util.Optional;
 
-public class UserController {
-    private final UserService userService;
+    public class UserController {
+        private final UserService userService;
+        private final TokenService tokenService;
 
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, TokenService tokenService) {
         this.userService = userService;
+        this.tokenService = tokenService;
     }
+
 
     public void register(Context ctx){
         try{
+            Map<String, String> errors = new HashMap<>();
+
             NewRegisterRequest req = ctx.bodyAsClass(NewRegisterRequest.class);
 
             if (!userService.isValidUsername(req.getName())){
@@ -30,6 +35,11 @@ public class UserController {
             }
 
             if (!userService.isUniqueUsername(req.getName())){
+                ctx.status(409); //Conflict
+                return;
+            }
+
+            if (!userService.isUniqueEmail(req.getEmail())){
                 ctx.status(409); //Conflict
                 return;
             }
@@ -68,6 +78,13 @@ public class UserController {
             //Sends user info back to postman
             User foundUser = loginUser.get();
             Principal principal = new Principal (foundUser);
+
+            String token = tokenService.generateToken(principal);
+
+            //String token = ctx.header("auth-token");
+            //Principal principal = tokenService.parseToken(token);
+
+            ctx.header("auth-token", token);
             ctx.json(principal);
             ctx.status(200); //ok
 

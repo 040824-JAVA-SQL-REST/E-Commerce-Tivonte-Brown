@@ -57,4 +57,8 @@ public class UserService {
     }
 
     //Add is isUniqueEmail
+    public boolean isUniqueEmail(String email) {
+        List<User> users = userDao.findAll();
+        return users.stream().noneMatch(u -> u.getEmail().equals(email));
+    }
 }

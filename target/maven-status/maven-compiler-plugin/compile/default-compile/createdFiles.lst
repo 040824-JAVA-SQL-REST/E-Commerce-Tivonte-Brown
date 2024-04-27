@@ -3,6 +3,7 @@ com\revature\eCommerce\models\Cart.class
 com\revature\eCommerce\Controllers\CartController.class
 com\revature\eCommerce\screens\HomeScreen.class
 com\revature\eCommerce\dao\CrudDao.class
+com\revature\eCommerce\dto\request\NewProductsUpdate.class
 com\revature\eCommerce\dao\ProductsDao.class
 com\revature\eCommerce\services\UserService.class
 com\revature\eCommerce\utils\ResourceNotFoundException.class
@@ -13,8 +14,10 @@ com\revature\eCommerce\screens\LoginScreen.class
 com\revature\eCommerce\Controllers\RoleController.class
 com\revature\eCommerce\models\Products.class
 com\revature\eCommerce\screens\BaseScreen.class
+com\revature\eCommerce\services\TokenService.class
 com\revature\eCommerce\screens\StartScreen.class
 com\revature\eCommerce\services\WalletService.class
+com\revature\eCommerce\dto\request\NewProductsDelete.class
 com\revature\eCommerce\dao\UserDao.class
 com\revature\eCommerce\dto\responses\Principal.class
 com\revature\eCommerce\models\User.class

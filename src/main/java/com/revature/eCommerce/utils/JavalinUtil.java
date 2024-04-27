@@ -1,6 +1,7 @@
 package com.revature.eCommerce.utils;
 
 import com.revature.eCommerce.services.RouterService;
+import com.revature.eCommerce.services.TokenService;
 import com.revature.eCommerce.services.UserService;
 import com.revature.eCommerce.services.ProductsService;
 import com.revature.eCommerce.services.RoleService;
@@ -18,9 +19,9 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class JavalinUtil {
 
-    public Javalin getJavalin(){
-        UserController userController = new UserController(getUserService());
-        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()));
+    public Javalin getJavalin() throws IOException{
+        UserController userController = new UserController(getUserService(), new TokenService());
+        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()), new TokenService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -30,6 +31,8 @@ public class JavalinUtil {
                 });
                     path("/products", () -> {
                     post("/create", productsController::create);
+                    patch("/update", productsController::update);
+                    delete("/delete", productsController::delete);
                 });
             });
         });
