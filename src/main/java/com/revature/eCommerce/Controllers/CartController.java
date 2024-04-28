@@ -23,7 +23,7 @@ private final CartService cartService;
     }
 
 
-        public void create(Context ctx){
+        public void addTo(Context ctx){
 
             try{
                 Map<String, String> errors = new HashMap<>();
@@ -44,17 +44,17 @@ private final CartService cartService;
                     return;
                 }
 
-                if(!principal.getRole().getRoleName().equalsIgnoreCase("admin")){
-                    ctx.status(403);
-                    errors.put("Error:", "Invalid authorization");
-                    ctx.json(errors);
-                    return;
-                }
+                //add String productName, int quantity to Cart object
 
                 NewCartRequest req = ctx.bodyAsClass(NewCartRequest.class);
 
-                Cart newProduct = new Cart(req);
-                newProduct = cartService.save(newProduct);
+                Cart newItem = new Cart(req);
+
+                ////add String cartID, String buyer,
+                newItem.setCartID(principal.getUserID());
+                newItem.setBuyer(principal.getName());
+
+                newItem = cartService.save(newItem);
 
                 ctx.status(201); //Created
 
@@ -65,7 +65,7 @@ private final CartService cartService;
 
         }
 
-        public void delete(Context ctx){
+        public void deleteItem(Context ctx){
 
             try{
                 Map<String, String> errors = new HashMap<>();
@@ -86,19 +86,22 @@ private final CartService cartService;
                     return;
                 }
 
-                if(!principal.getRole().getRoleName().equalsIgnoreCase("admin")){
-                    ctx.status(403);
-                    errors.put("Error:", "Invalid authorization");
+
+                NewCartDelete req = ctx.bodyAsClass(NewCartDelete.class);
+                if (req.getProductName() == null ){
+                    ctx.status(401);
+                    errors.put("Error:", "Invalid delete request.");
                     ctx.json(errors);
                     return;
                 }
 
-                NewCartDelete req = ctx.bodyAsClass(NewCartDelete.class);
+                req.setCartID(principal.getUserID());
 
-                Cart newProduct = new Cart(req);
-                newProduct = cartService.delete(newProduct);
+                Cart newProductDelete = new Cart(req);
+                newProductDelete = cartService.deleteItem(newProductDelete);
 
-                ctx.status(201); //Created
+                ctx.json(newProductDelete);
+                ctx.status(200); //ok
 
             } catch (Exception e){
                 ctx.status(500); //Internal Error

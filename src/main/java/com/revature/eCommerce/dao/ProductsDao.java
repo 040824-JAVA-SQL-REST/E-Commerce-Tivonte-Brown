@@ -30,7 +30,7 @@ public class ProductsDao implements CrudDao<Products> {
             throw new RuntimeException("Can't find application.properties file", e);
         }
     }
-    //update and delete products as admin
+
 
     @Override
     public void update(Products obj) {
@@ -88,6 +88,31 @@ public class ProductsDao implements CrudDao<Products> {
         return products;
 
     }
+
+    public List<Products> findProductsByName(String productName) {
+      List<Products> products = new ArrayList<>();
+
+      try (Connection conn = ConnectionFactory.getInstance().getConnection();
+           PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE productName = ?")) {
+          ps.setString(1, productName);
+
+          try (ResultSet rs = ps.executeQuery()) {
+              while (rs.next()) {
+                  Products product = new Products();
+                  product.setProductID(rs.getString("productID"));
+                  product.setProductName(rs.getString("productName"));
+                  product.setProductValue(rs.getLong("productValue"));
+
+                  products.add(product);
+              }
+          }
+      } catch (SQLException e) {
+          throw new RuntimeException("Error retrieving product by productName from database", e);
+      } catch (IOException e) {
+          throw new RuntimeException("Can't find application.properties file", e);
+      }
+      return products;
+  }
 
     @Override
     public Products findById(String id) {

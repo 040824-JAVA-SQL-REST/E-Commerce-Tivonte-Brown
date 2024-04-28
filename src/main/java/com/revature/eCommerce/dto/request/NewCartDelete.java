@@ -1,6 +1,6 @@
 package com.revature.eCommerce.dto.request;
 
-public class NewCartRequest {
+public class NewCartDelete {
     private String cartID;
     private String buyer;
     private String productID;
@@ -11,20 +11,19 @@ public class NewCartRequest {
 
 
 
-    public NewCartRequest() {
+    public NewCartDelete() {
     }
 
-    public NewCartRequest(String cartID, String buyer, String productName, int quantity) {
+    public NewCartDelete(String productName) {
+        this.productName = productName;
+
+    }
+
+    public NewCartDelete(String cartID, String productName) {
         this.cartID = cartID;
-        this.buyer = buyer;
-        this.productName = productName;
-        this.quantity = quantity;
+
     }
 
-    public NewCartRequest(String productName, int quantity) {
-        this.productName = productName;
-        this.quantity = quantity;
-    }
 
     public String getCartID() {
         return cartID;

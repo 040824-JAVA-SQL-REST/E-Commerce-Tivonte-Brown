@@ -1,17 +1,10 @@
 package com.revature.eCommerce.utils;
 
-import com.revature.eCommerce.services.RouterService;
-import com.revature.eCommerce.services.TokenService;
-import com.revature.eCommerce.services.UserService;
-import com.revature.eCommerce.services.ProductsService;
-import com.revature.eCommerce.services.RoleService;
+import com.revature.eCommerce.services.*;
 import com.revature.eCommerce.utils.ConnectionFactory;
-import com.revature.eCommerce.dao.UserDao;
-import com.revature.eCommerce.dao.ProductsDao;
-import com.revature.eCommerce.dao.RoleDao;
+import com.revature.eCommerce.dao.*;
 import com.revature.eCommerce.models.User;
-import com.revature.eCommerce.Controllers.ProductsController;
-import com.revature.eCommerce.Controllers.UserController;
+import com.revature.eCommerce.Controllers.*;
 
 import java.io.IOException;
 import io.javalin.Javalin;
@@ -22,7 +15,7 @@ public class JavalinUtil {
     public Javalin getJavalin() throws IOException{
         UserController userController = new UserController(getUserService(), new TokenService());
         ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()), new TokenService());
-        CartController cartController = new CartController(new CartService(new CartDao()), new TokenService());
+        CartController cartController = new CartController(new CartService(new CartDao(), new ProductsService(new ProductsDao())), new TokenService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -37,7 +30,7 @@ public class JavalinUtil {
                 });
                 path("/cart", () -> {
                     post("/addTo", cartController::addTo);
-                    delete("/delete", cartController::delete);
+                    delete("/deleteItem", cartController::deleteItem);
                 });
             });
         });

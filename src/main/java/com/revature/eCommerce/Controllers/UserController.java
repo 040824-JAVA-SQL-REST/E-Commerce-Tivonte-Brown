@@ -81,9 +81,6 @@ import java.util.Optional;
 
             String token = tokenService.generateToken(principal);
 
-            //String token = ctx.header("auth-token");
-            //Principal principal = tokenService.parseToken(token);
-
             ctx.header("auth-token", token);
             ctx.json(principal);
             ctx.status(200); //ok

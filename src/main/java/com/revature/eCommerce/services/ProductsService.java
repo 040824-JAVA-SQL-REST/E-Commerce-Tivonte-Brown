@@ -32,6 +32,20 @@ public class ProductsService {
 
         }
 
+        public String getProductIDByName(String name){
+
+            return productsDao.findAll().stream()
+            .filter(p -> p.getProductName().equals(name))
+            .findFirst().get().getProductID();
+        }
+
+        public Long getProductValueByName(String name){
+
+            return productsDao.findAll().stream()
+            .filter(p -> p.getProductName().equals(name))
+            .findFirst().get().getProductValue();
+        }
+
 
 }
 

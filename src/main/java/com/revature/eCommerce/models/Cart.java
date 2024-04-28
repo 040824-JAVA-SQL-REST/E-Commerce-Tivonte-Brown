@@ -1,5 +1,10 @@
 package com.revature.eCommerce.models;
 
+import java.util.UUID;
+
+import com.revature.eCommerce.dto.request.NewCartDelete;
+import com.revature.eCommerce.dto.request.NewCartRequest;
+
 public class Cart {
     private String cartID;
     private String buyer;
@@ -7,9 +12,22 @@ public class Cart {
     private String productName;
     private long price;
     private int quantity;
+    private long totalPrice;
 
     public Cart(){}
 
+    public Cart(NewCartRequest req) {
+        this.cartID = req.getCartID();
+        this.buyer = req.getBuyer();
+        this.productName = req.getProductName();
+        this.quantity = req.getQuantity();
+    }
+
+    public Cart(NewCartDelete req) {
+        this.cartID = req.getCartID();
+        this.productName = req.getProductName();
+
+    }
 
     public Cart(String cartID, String buyer, String productName, int quantity) {
         this.cartID = cartID;
@@ -77,6 +95,16 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+
+    public long getTotalPrice() {
+        return totalPrice;
+    }
+
+
+    public void setTotalPrice(long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 
