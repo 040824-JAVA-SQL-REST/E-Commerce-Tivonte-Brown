@@ -114,11 +114,35 @@ public class ProductsDao implements CrudDao<Products> {
       return products;
   }
 
+  public List<Products> findByIdP(String id) {
+    List<Products> products = new ArrayList<>();
+
+    try (Connection conn = ConnectionFactory.getInstance().getConnection();
+         PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE productID = ?")) {
+        ps.setString(1, id);
+
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Products product = new Products();
+                product.setProductID(rs.getString("productID"));
+                product.setProductName(rs.getString("productName"));
+                product.setProductValue(rs.getLong("productValue"));
+
+                products.add(product);
+            }
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException("Error retrieving product by productID from the database", e);
+    } catch (IOException e) {
+        throw new RuntimeException("Can't find application.properties file", e);
+    }
+    return products;
+}
+
     @Override
     public Products findById(String id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+      return null;
+  }
 
 
 }

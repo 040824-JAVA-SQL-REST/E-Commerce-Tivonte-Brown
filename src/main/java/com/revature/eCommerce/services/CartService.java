@@ -34,9 +34,9 @@ public class CartService {
             return cart;
         }
 
-        public Cart delete(Cart cart) {
-            cartDao.delete(cart.getCartID());
-            return cart;
+        public void deleteAll(String cartID) {
+            cartDao.deleteAll(cartID);
+
         }
 
         public Cart deleteItem(Cart cart) {
@@ -46,6 +46,10 @@ public class CartService {
 
         public List<Cart> findCart(String cartID){
             return cartDao.findByCartId(cartID);
+        }
+
+        public List<Cart> findCartLook(String cartID){
+            return cartDao.findByCartIdPeek(cartID);
         }
 
         public Long calculateTotalPrice(List<Cart> cart){
@@ -58,6 +62,11 @@ public class CartService {
             return totalPrice;
         }
 
+        public Cart setItemPrice(Cart cart){
+            Long itemPrice = cart.getPrice() * cart.getQuantity();
+            cart.setitemPrice(itemPrice);
+            return cart;
+        }
 
 
 

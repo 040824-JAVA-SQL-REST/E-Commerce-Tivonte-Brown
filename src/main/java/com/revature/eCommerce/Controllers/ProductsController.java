@@ -98,6 +98,13 @@ public class ProductsController {
 
                 NewProductsDelete req = ctx.bodyAsClass(NewProductsDelete.class);
 
+                if (productsService.getProductbyID(req.getProductID()) == null){
+                    ctx.status(401);
+                    errors.put("Error:", "Invalid ID.");
+                    ctx.json(errors);
+                    return;
+                }
+
                 Products newProduct = new Products(req);
                 newProduct = productsService.delete(newProduct);
 
@@ -141,6 +148,14 @@ public class ProductsController {
                 NewProductsUpdate req = ctx.bodyAsClass(NewProductsUpdate.class);
 
                 Products newProduct = new Products(req);
+
+                if (productsService.getProductbyID(req.getProductID()) == null){
+                    ctx.status(401);
+                    errors.put("Error:", "Invalid ID.");
+                    ctx.json(errors);
+                    return;
+                }
+
                 newProduct = productsService.update(newProduct);
 
                 ctx.status(201); //Created
@@ -149,6 +164,39 @@ public class ProductsController {
                 ctx.status(500); //Internal Error
                 e.printStackTrace();
             }
+        }
 
+
+        public void prodoctCatalog(Context ctx){
+
+            try{
+                Map<String, String> errors = new HashMap<>();
+
+                String token = ctx.header("auth-token");
+                if (token == null || token.isEmpty()) {
+                    ctx.status(401);
+                    errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
+                    return;
+                }
+
+                Principal principal = tokenService.parseToken(token);
+                if (principal == null) {
+                    ctx.status(401);
+                    errors.put("Error:", "Invalid token.");
+                    ctx.json(errors);
+                    return;
+                }
+
+                List<Products> productCatalog = productsService.getProductsCatalog();
+
+                ctx.json(productCatalog);
+
+                ctx.status(201); //Created
+
+            } catch (Exception e){
+                ctx.status(500); //Internal Error
+                e.printStackTrace();
+            }
         }
     }

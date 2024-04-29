@@ -12,7 +12,7 @@ public class Cart {
     private String productName;
     private long price;
     private int quantity;
-    private long totalPrice;
+    private long itemPrice;
 
     public Cart(){}
 
@@ -46,7 +46,6 @@ public class Cart {
         this.price = price;
         this.quantity = quantity;
     }
-
 
 
     public String getCartID() {
@@ -98,13 +97,13 @@ public class Cart {
     }
 
 
-    public long getTotalPrice() {
-        return totalPrice;
+    public long getitemPrice() {
+        return itemPrice;
     }
 
 
-    public void setTotalPrice(long totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setitemPrice(long itemPrice) {
+        this.itemPrice = itemPrice;
     }
 
 

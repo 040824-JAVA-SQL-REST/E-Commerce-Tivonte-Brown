@@ -15,7 +15,8 @@ public class JavalinUtil {
     public Javalin getJavalin() throws IOException{
         UserController userController = new UserController(getUserService(), new TokenService());
         ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()), new TokenService());
-        CartController cartController = new CartController(new CartService(new CartDao(), new ProductsService(new ProductsDao())), new TokenService());
+        CartController cartController = new CartController(new CartService(new CartDao(), new ProductsService(new ProductsDao())), new TokenService(), new OrderHistoryService(new OrderHistoryDao()));
+        OrderHistoryController orderHistoryController = new OrderHistoryController(new OrderHistoryService(new OrderHistoryDao()), new TokenService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -27,10 +28,18 @@ public class JavalinUtil {
                     post("/create", productsController::create);
                     patch("/update", productsController::update);
                     delete("/delete", productsController::delete);
+                    get("/productsCatalog", productsController::prodoctCatalog);
                 });
                 path("/cart", () -> {
                     post("/addTo", cartController::addTo);
                     delete("/deleteItem", cartController::deleteItem);
+                    get("/cartLook", cartController::cartLook);
+                    post("/checkout", cartController::checkout);
+
+                });
+                path("/orderHistory", () -> {
+                    get("/myOrderHistory", orderHistoryController::myOrderHistory);
+                    get("/allOrders", orderHistoryController::allOrders);
                 });
             });
         });

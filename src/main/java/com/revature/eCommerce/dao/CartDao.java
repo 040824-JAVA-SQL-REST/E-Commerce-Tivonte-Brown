@@ -31,6 +31,7 @@ public class CartDao implements CrudDao<Cart> {
             throw new RuntimeException("Can't find application.properties file", e);
         }
     }
+
     @Override
     public void update(Cart obj) {
         // TODO Auto-generated method stub
@@ -81,7 +82,6 @@ public class CartDao implements CrudDao<Cart> {
 
     public List<Cart> findByCartId(String cartId) {
     List<Cart> carts = new ArrayList<>();
-
     try (Connection conn = ConnectionFactory.getInstance().getConnection();
          PreparedStatement ps = conn.prepareStatement("SELECT * FROM cart WHERE cartID = ?");
     ) {
@@ -106,6 +106,33 @@ public class CartDao implements CrudDao<Cart> {
             }
             return carts;
         }
+
+        public List<Cart> findByCartIdPeek(String cartId) {
+            List<Cart> carts = new ArrayList<>();
+            try (Connection conn = ConnectionFactory.getInstance().getConnection();
+                 PreparedStatement ps = conn.prepareStatement("SELECT * FROM cart WHERE cartID = ?");
+            ) {
+                ps.setString(1, cartId);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        Cart cart = new Cart();
+
+                        cart.setBuyer(rs.getString("buyer"));
+                        cart.setProductID(rs.getString("productID"));
+                        cart.setProductName(rs.getString("productName"));
+                        cart.setPrice(rs.getLong("price"));
+                        cart.setQuantity(rs.getInt("quantities"));
+
+                        carts.add(cart);
+                    }
+                }
+                    } catch (SQLException e) {
+                        throw new RuntimeException("Error retrieving items from cart: " + e.getMessage());
+                    } catch (IOException e) {
+                        throw new RuntimeException("Can't find application.properties file");
+                    }
+                    return carts;
+                }
 
     @Override
     public List<Cart> findAll() {
