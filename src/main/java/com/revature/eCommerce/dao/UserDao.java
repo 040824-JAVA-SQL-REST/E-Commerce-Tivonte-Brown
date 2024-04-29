@@ -69,7 +69,6 @@ public class UserDao implements CrudDao<User> {
         }
         return users;
 
-
     }
 
 

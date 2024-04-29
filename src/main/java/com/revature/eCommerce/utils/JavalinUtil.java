@@ -1,16 +1,10 @@
 package com.revature.eCommerce.utils;
 
-import com.revature.eCommerce.services.RouterService;
-import com.revature.eCommerce.services.UserService;
-import com.revature.eCommerce.services.ProductsService;
-import com.revature.eCommerce.services.RoleService;
+import com.revature.eCommerce.services.*;
 import com.revature.eCommerce.utils.ConnectionFactory;
-import com.revature.eCommerce.dao.UserDao;
-import com.revature.eCommerce.dao.ProductsDao;
-import com.revature.eCommerce.dao.RoleDao;
+import com.revature.eCommerce.dao.*;
 import com.revature.eCommerce.models.User;
-import com.revature.eCommerce.Controllers.ProductsController;
-import com.revature.eCommerce.Controllers.UserController;
+import com.revature.eCommerce.Controllers.*;
 
 import java.io.IOException;
 import io.javalin.Javalin;
@@ -18,9 +12,11 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class JavalinUtil {
 
-    public Javalin getJavalin(){
-        UserController userController = new UserController(getUserService());
-        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()));
+    public Javalin getJavalin() throws IOException{
+        UserController userController = new UserController(getUserService(), new TokenService());
+        ProductsController productsController = new ProductsController(new ProductsService(new ProductsDao()), new TokenService());
+        CartController cartController = new CartController(new CartService(new CartDao(), new ProductsService(new ProductsDao())), new TokenService(), new OrderHistoryService(new OrderHistoryDao()));
+        OrderHistoryController orderHistoryController = new OrderHistoryController(new OrderHistoryService(new OrderHistoryDao()), new TokenService());
 
         return Javalin.create(config -> {
             config.router.apiBuilder(()-> {
@@ -30,6 +26,20 @@ public class JavalinUtil {
                 });
                     path("/products", () -> {
                     post("/create", productsController::create);
+                    patch("/update", productsController::update);
+                    delete("/delete", productsController::delete);
+                    get("/productsCatalog", productsController::prodoctCatalog);
+                });
+                path("/cart", () -> {
+                    post("/addTo", cartController::addTo);
+                    delete("/deleteItem", cartController::deleteItem);
+                    get("/cartLook", cartController::cartLook);
+                    post("/checkout", cartController::checkout);
+
+                });
+                path("/orderHistory", () -> {
+                    get("/myOrderHistory", orderHistoryController::myOrderHistory);
+                    get("/allOrders", orderHistoryController::allOrders);
                 });
             });
         });

@@ -25,36 +25,124 @@ public class ProductsDao implements CrudDao<Products> {
 
             ps.executeUpdate();
             } catch (SQLException e) {
-            throw new RuntimeException("Error inserting user into database", e);
+            throw new RuntimeException("Error inserting product into database", e);
             } catch (IOException e) {
             throw new RuntimeException("Can't find application.properties file", e);
         }
     }
-    //update and delete products as admin
+
 
     @Override
     public void update(Products obj) {
-        // TODO Auto-generated method stub
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+          PreparedStatement ps = conn
+          .prepareStatement("UPDATE products SET productName = ?, productValue = ? WHERE productID = ?")) {
+            ps.setString(1, obj.getProductName());
+            ps.setLong(2, obj.getProductValue());
+            ps.setString(3, obj.getProductID());
 
-    }
+          ps.executeUpdate();
+          }catch (SQLException e) {
+            throw new RuntimeException("Error updating product in database", e);
+          }catch (IOException e) {
+            throw new RuntimeException("Can't find application.properties file", e);
+          }
+      }
 
     @Override
-    public void delete(String id) {
-        // TODO Auto-generated method stub
+    public void delete(String ID) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+          PreparedStatement ps = conn
+          .prepareStatement("DELETE FROM products WHERE productID = ?")) {
+            ps.setString(1, ID);
 
+            ps.executeUpdate();
+          }catch (SQLException e) {
+            throw new RuntimeException("Error deleting product from database", e);
+          }catch (IOException e) {
+            throw new RuntimeException("Can't find application.properties file", e);
+          }
     }
 
     @Override
     public List<Products> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        List<Products> products = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products"); // Changed table name
+             ResultSet rs = ps.executeQuery()) {
+
+          while (rs.next()) {
+            Products product = new Products(); // Use Product object
+            product.setProductID(rs.getString("productID")); // Assuming productID exists
+            product.setProductName(rs.getString("productName")); // Assuming productName exists
+            product.setProductValue(rs.getLong("productValue")); // Assuming productValue exists
+
+            products.add(product);
+          }
+        } catch (SQLException e) {
+          throw new RuntimeException("Can't connect to database");
+        } catch (IOException e) {
+          throw new RuntimeException("Can't find application.properties file");
+        }
+        return products;
+
     }
+
+    public List<Products> findProductsByName(String productName) {
+      List<Products> products = new ArrayList<>();
+
+      try (Connection conn = ConnectionFactory.getInstance().getConnection();
+           PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE productName = ?")) {
+          ps.setString(1, productName);
+
+          try (ResultSet rs = ps.executeQuery()) {
+              while (rs.next()) {
+                  Products product = new Products();
+                  product.setProductID(rs.getString("productID"));
+                  product.setProductName(rs.getString("productName"));
+                  product.setProductValue(rs.getLong("productValue"));
+
+                  products.add(product);
+              }
+          }
+      } catch (SQLException e) {
+          throw new RuntimeException("Error retrieving product by productName from database", e);
+      } catch (IOException e) {
+          throw new RuntimeException("Can't find application.properties file", e);
+      }
+      return products;
+  }
+
+  public List<Products> findByIdP(String id) {
+    List<Products> products = new ArrayList<>();
+
+    try (Connection conn = ConnectionFactory.getInstance().getConnection();
+         PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE productID = ?")) {
+        ps.setString(1, id);
+
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Products product = new Products();
+                product.setProductID(rs.getString("productID"));
+                product.setProductName(rs.getString("productName"));
+                product.setProductValue(rs.getLong("productValue"));
+
+                products.add(product);
+            }
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException("Error retrieving product by productID from the database", e);
+    } catch (IOException e) {
+        throw new RuntimeException("Can't find application.properties file", e);
+    }
+    return products;
+}
 
     @Override
     public Products findById(String id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+      return null;
+  }
 
 
 }

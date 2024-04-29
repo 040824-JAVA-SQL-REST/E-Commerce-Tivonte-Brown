@@ -1,6 +1,9 @@
 package com.revature.eCommerce.models;
 
+import com.revature.eCommerce.dto.request.NewProductsDelete;
 import com.revature.eCommerce.dto.request.NewProductsRequest;
+import com.revature.eCommerce.dto.request.NewProductsUpdate;
+
 import java.util.UUID;
 
 public class Products {
@@ -14,6 +17,18 @@ public class Products {
 
     public Products(NewProductsRequest req){
         this.productID = UUID.randomUUID().toString();
+        this.productName = req.getProductName();
+        this.productValue = req.getProductValue();
+    }
+
+    public Products(NewProductsDelete req){
+        this.productID = req.getProductID();
+        this.productName = req.getProductName();
+        this.productValue = req.getProductValue();
+    }
+
+    public Products(NewProductsUpdate req){
+        this.productID = req.getProductID();
         this.productName = req.getProductName();
         this.productValue = req.getProductValue();
     }

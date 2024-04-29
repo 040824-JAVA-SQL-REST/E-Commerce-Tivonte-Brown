@@ -1,52 +1,30 @@
-package com.revature.eCommerce.models;
+package com.revature.eCommerce.dto.request;
 
-import java.util.UUID;
-
-import com.revature.eCommerce.dto.request.NewCartDelete;
-import com.revature.eCommerce.dto.request.NewCartRequest;
-
-public class Cart {
+public class NewCartRequest {
     private String cartID;
     private String buyer;
     private String productID;
     private String productName;
     private long price;
     private int quantity;
-    private long itemPrice;
+    private long totalPrice;
 
-    public Cart(){}
 
-    public Cart(NewCartRequest req) {
-        this.cartID = req.getCartID();
-        this.buyer = req.getBuyer();
-        this.productName = req.getProductName();
-        this.quantity = req.getQuantity();
+
+    public NewCartRequest() {
     }
 
-    public Cart(NewCartDelete req) {
-        this.cartID = req.getCartID();
-        this.productName = req.getProductName();
-
-    }
-
-    public Cart(String cartID, String buyer, String productName, int quantity) {
+    public NewCartRequest(String cartID, String buyer, String productName, int quantity) {
         this.cartID = cartID;
         this.buyer = buyer;
         this.productName = productName;
         this.quantity = quantity;
     }
 
-
-
-    public Cart(String cartID, String buyer, String productID, String productName, long price, int quantity) {
-        this.cartID = cartID;
-        this.buyer = buyer;
-        this.productID = productID;
+    public NewCartRequest(String productName, int quantity) {
         this.productName = productName;
-        this.price = price;
         this.quantity = quantity;
     }
-
 
     public String getCartID() {
         return cartID;
@@ -96,14 +74,12 @@ public class Cart {
         this.quantity = quantity;
     }
 
-
-    public long getitemPrice() {
-        return itemPrice;
+    public long getTotalPrice() {
+        return totalPrice;
     }
 
-
-    public void setitemPrice(long itemPrice) {
-        this.itemPrice = itemPrice;
+    public void setTotalPrice(long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 
