@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.revature.eCommerce.dao.ProductsDao;
 import com.revature.eCommerce.models.Products;
-import com.revature.eCommerce.models.User;
 
 public class ProductsService {
     private final ProductsDao productsDao;
@@ -61,6 +60,7 @@ public class ProductsService {
 
             return productsDao.findAll();
         }
+
 
 
 }

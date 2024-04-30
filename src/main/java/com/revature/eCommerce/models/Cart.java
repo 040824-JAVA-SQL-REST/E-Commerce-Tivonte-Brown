@@ -29,6 +29,13 @@ public class Cart {
 
     }
 
+    public Cart(String cartID, String productName, int quantity, long price) {
+        this.cartID = cartID;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     public Cart(String cartID, String buyer, String productName, int quantity) {
         this.cartID = cartID;
         this.buyer = buyer;

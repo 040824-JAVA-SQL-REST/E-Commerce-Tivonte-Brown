@@ -2,15 +2,9 @@ package com.revature.eCommerce.services;
 
 import com.revature.eCommerce.dao.OrderHistoryDao;
 import com.revature.eCommerce.models.OrderHistory;
-import com.revature.eCommerce.models.User;
-import com.revature.eCommerce.models.Cart;
 
 import java.util.Optional;
 import java.util.UUID;
-
-import com.revature.eCommerce.services.ProductsService;
-
-import java.sql.Timestamp;
 import java.util.List;
 
 

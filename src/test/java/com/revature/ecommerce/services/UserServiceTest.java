@@ -15,20 +15,16 @@ import com.revature.eCommerce.utils.ResourceNotFoundException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertArrayEquals;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.revature.eCommerce.dao.UserDao;
-import com.revature.eCommerce.models.User;
-import com.revature.eCommerce.utils.ResourceNotFoundException;
 
 public class UserServiceTest {
 
@@ -66,6 +62,7 @@ public class UserServiceTest {
         assertTrue(BCrypt.checkpw("testPassword", savedUser.getPassword()));
 
     }
+
 
     @Test(expected = ResourceNotFoundException.class)
     public void UserServiceSaveTest_RoleNotFound() {

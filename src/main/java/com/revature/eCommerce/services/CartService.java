@@ -6,7 +6,6 @@ import com.revature.eCommerce.models.User;
 import java.util.List;
 import java.util.Optional;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.eCommerce.dao.CartDao;
 import com.revature.eCommerce.services.ProductsService;
@@ -63,7 +62,5 @@ public class CartService {
             cart.setitemPrice(itemPrice);
             return cart;
         }
-
-
 
 }
