@@ -19,13 +19,12 @@ public class OrderHistoryDao implements CrudDao<OrderHistory> {
     @Override
     public void save(OrderHistory obj) {
 
-       String OrderID = UUID.randomUUID().toString();
        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
        timestamp.setNanos(0);
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO ordersHistory (orderID, productID, productName, price, quantity, totalPrice, userID, buyer, timeOfPurchase, Pending) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-            ps.setString(1, OrderID);
+            ps.setString(1, obj.getOrderID());
             ps.setString(2, obj.getProductID());
             ps.setString(3, obj.getProductName());
             ps.setLong(4, obj.getPrice());
@@ -43,6 +42,7 @@ public class OrderHistoryDao implements CrudDao<OrderHistory> {
             throw new RuntimeException("Can't find application.properties file", e);
         }
     }
+
 
     @Override
     public void update(OrderHistory obj) {

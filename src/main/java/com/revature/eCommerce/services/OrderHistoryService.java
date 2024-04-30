@@ -6,6 +6,8 @@ import com.revature.eCommerce.models.User;
 import com.revature.eCommerce.models.Cart;
 
 import java.util.Optional;
+import java.util.UUID;
+
 import com.revature.eCommerce.services.ProductsService;
 
 import java.sql.Timestamp;
@@ -26,9 +28,10 @@ public class OrderHistoryService {
             //add timestamp and totalOrderPrice to orderHistory object
 
             List<OrderHistory> OrderHistoryList = orderHistoryDao.createOrderHistoryByID(orderHistory);
-
+            String orderID = UUID.randomUUID().toString();
             // Iterate over each object in the OrderHistoryList
             for (OrderHistory oH : OrderHistoryList) {
+                oH.setOrderID(orderID);
                 // Save the current orderHistory object using orderHistoryDao.save()
                 orderHistoryDao.save(oH);
             }

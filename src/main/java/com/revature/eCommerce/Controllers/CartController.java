@@ -139,7 +139,7 @@ public class CartController {
                 }
 
 
-                List<Cart> cartLook = cartService.findCartLook(principal.getUserID());
+                List<Cart> cartLook = cartService.findCart(principal.getUserID());
 
                 long totalPrice = cartService.calculateTotalPrice(cartLook);
 
@@ -198,7 +198,6 @@ public class CartController {
 
 
                 ctx.json(checkoutData);
-
 
                 orderHistoryService.save(orderHistory);
 
