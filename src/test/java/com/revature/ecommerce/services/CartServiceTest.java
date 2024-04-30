@@ -64,7 +64,7 @@ public class CartServiceTest {
             }
 
         @Test
-        public void testDeleteAll() {
+        public void CartServiceTestDeleteAll() {
             String cartID = "123";
 
             cartService.deleteAll(cartID);
@@ -75,7 +75,7 @@ public class CartServiceTest {
         }
 
         @Test
-        public void testDeleteItem() {
+        public void CartServiceTestDeleteItem() {
             // Mock data
             Cart cart = new Cart();
             cart.setCartID("123");
@@ -92,7 +92,7 @@ public class CartServiceTest {
         }
 
         @Test
-        public void testFindCart() {
+        public void CartServiceTestFindCart() {
             String cartID = "123";
             List<Cart> expectedCartList = new ArrayList<>();
 
@@ -109,7 +109,7 @@ public class CartServiceTest {
         }
 
         @Test
-        public void testCalculateTotalPrice() {
+        public void CartServiceTestCalculateTotalPrice() {
             // Mock data
             List<Cart> cartList = new ArrayList<>();
             cartList.add(new Cart("1", "Product1", 2, 100L));
