@@ -70,13 +70,15 @@ public class TokenServiceTest {
 
             @Test
             public void TokenServiceTestParseToken() {
-                String token = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiZGFmZWU0Ni1mZGRhLTQ3NTUtYTM2Yi1kNDQ1YjdjNDhhMDUiLCJpc3MiOiJlY29tbWVyY2UiLCJzdWIiOiJVc2VybmFtZTEyMyIsInJvbGVJRCI6IjEwUlctNlBORUhWWi1TUzJHV1AtR1c4TUgtMUNYWCIsInJvbGVOYW1lIjoiREVGQVVMVCIsImV4cCI6MTcxNDQ2MzgwNX0.HaSfzZkReRDXN3uUIm74UyLcR31czBjE6lSTSQ6tkxM";
 
-                Principal principal = tokenService.parseToken(token);
+                Role role = new Role("1", "ROLE_ADMIN");
+                Principal principal = new Principal("userId123", "john", role);
+                String token = tokenService.generateToken(principal);
+                Principal principalT = tokenService.parseToken(token);
 
-                assertEquals(principal.getUserID(), "bdafee46-fdda-4755-a36b-d445b7c48a05");
-                assertEquals(principal.getName(), "Username123");
-                assertEquals(principal.getRole().getID(), "10RW-6PNEHVZ-SS2GWP-GW8MH-1CXX");
-                assertEquals(principal.getRole().getRoleName(), "DEFAULT");
+                assertEquals(principalT.getUserID(), "userId123");
+                assertEquals(principalT.getName(), "john");
+                assertEquals(principalT.getRole().getID(), "1");
+                assertEquals(principalT.getRole().getRoleName(), "ROLE_ADMIN");
             }
 }
