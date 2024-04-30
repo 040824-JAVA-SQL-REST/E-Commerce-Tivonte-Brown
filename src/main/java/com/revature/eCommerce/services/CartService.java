@@ -6,7 +6,6 @@ import com.revature.eCommerce.models.User;
 import java.util.List;
 import java.util.Optional;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.eCommerce.dao.CartDao;
 import com.revature.eCommerce.services.ProductsService;
@@ -48,10 +47,6 @@ public class CartService {
             return cartDao.findByCartId(cartID);
         }
 
-        public List<Cart> findCartLook(String cartID){
-            return cartDao.findByCartIdPeek(cartID);
-        }
-
         public Long calculateTotalPrice(List<Cart> cart){
             Long totalPrice = 0L;
             // Iterate through each cart in the list
@@ -67,7 +62,5 @@ public class CartService {
             cart.setitemPrice(itemPrice);
             return cart;
         }
-
-
 
 }
