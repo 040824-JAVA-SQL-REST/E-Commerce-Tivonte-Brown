@@ -25,7 +25,7 @@ Update existing products
 Delete products
 View all order history
 
-App requires a resources folder in \E-Commerce App\src\main with a application.properties file to run. Application.properties file requires (without quotation marks):
+App requires a resources folder in \E-Commerce App\src\main with an application.properties file to run. Application.properties file requires (without quotation marks):
 
 url=”insert postgresql server here”
 username=”insert server username”
